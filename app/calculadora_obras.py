@@ -1,3 +1,8 @@
+# ==========================================
+# MÓDULO: ALVENARIA E ESTRUTURA
+# Responsáveis: Nicolas Cleik ; SEU_NOME
+# ==========================================
+
 def calcular_area_em_m2(altura, comprimento):
     try:
         altura = float(altura)
@@ -26,3 +31,13 @@ def calcular_tijolos_por_parede(area_parede_m2, area_tijolo_m2):
     quantidade_de_blocos = round((area_parede_m2 / area_tijolo_m2), 2)
 
     return quantidade_de_blocos
+
+# ==========================================
+# MÓDULO: ACABAMENTO E PINTURA
+# Responsáveis: SEU_NOME
+# ==========================================,
+
+# ==========================================
+# MÓDULO: LOGISTICA E ORÇAMENTO
+# Responsáveis: SEU_NOME
+# ==========================================
