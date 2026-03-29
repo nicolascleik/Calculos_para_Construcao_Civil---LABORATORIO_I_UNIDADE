@@ -1,5 +1,5 @@
 import pytest
-from app.calculadora_obras import calcular_area_em_m2, calcular_tijolos_por_parede, calcular_volume_concreto, calcular_sacos_cimento
+from app.calculadora_obras import *
 
 # ==========================================
 # MÓDULO: ALVENARIA E ESTRUTURA
@@ -66,8 +66,38 @@ def test_calcular_sacos_cimento_zero():
         
 # ==========================================
 # MÓDULO: ACABAMENTO E PINTURA
-# Responsáveis: SEU_NOME
-# ==========================================,
+# Responsáveis: Pedro Gustavo;
+# ==========================================
+
+def test_calcular_caixas_piso_resultado():
+    resultado = calcular_caixas_piso(area_ambiente_m2=200, rendimento_caixa_m2=2)
+    assert resultado == 100
+
+def test_calcular_caixas_piso_zero_negativo():
+    resultado = calcular_caixas_piso(area_ambiente_m2=0, rendimento_caixa_m2=2)
+    assert 'Erro: O rendimento da caixa deve ser maior que zero.'
+
+# ------------------------------------------
+
+"""
+def test_calcular_rejunte_necessario_resultado():
+    resultado = calcular_rejunte_necessario(10,2,1)
+    assert resultado == 20
+
+def test_calcular_rejunte_necessario_zero_negativo():
+    resultado = calcular_rejunte_necessario(10,0,1)
+    assert 'Erro: O rendimento da caixa deve ser maior que zero.'
+"""
+
+# ------------------------------------------
+
+def test_calcular_litros_tinta_resultado():
+    resultado = calcular_litros_tinta(area_pintura_m2=20, rendimento_lata_m2=2, quantidade_demaos=2)
+    assert resultado == 20
+
+def test_calcular_litros_tinta_zero_negativo():
+    resultado = calcular_litros_tinta(area_pintura_m2=0,rendimento_lata_m2=2,quantidade_demaos=0)
+    assert 'Erro: O rendimento da caixa deve ser maior que zero.'
 
 # ==========================================
 # MÓDULO: LOGISTICA E ORÇAMENTO
