@@ -1,9 +1,9 @@
 import pytest
-from app.calculadora_obras import calcular_area_em_m2, calcular_tijolos_por_parede
+from app.calculadora_obras import calcular_area_em_m2, calcular_tijolos_por_parede, calcular_volume_concreto, calcular_sacos_cimento
 
 # ==========================================
 # MÓDULO: ALVENARIA E ESTRUTURA
-# Responsáveis: Nicolas Cleik ; SEU_NOME
+# Responsáveis: Nicolas Cleik ; Ana Clara
 # ==========================================
 
 def test_calcular_area_em_m2_valores_esperados():
@@ -44,6 +44,26 @@ def test_calcular_tijolos_por_parede_erro_de_digitacao():
     with pytest.raises(TypeError):
         calcular_tijolos_por_parede("cem", 10)
 
+# ------------------------------------------
+
+def test_calcular_volume_concreto_esperado():
+    valor = calcular_volume_concreto(1,2,3)
+    assert valor == 6
+
+def test_calcular_volume_concreto_zero():
+    valor = calcular_volume_concreto(0,2,2)
+    assert 'Nenhum dos parâmetros deve ser menor ou igual a 0'
+
+# ------------------------------------------
+
+def test_calcular_sacos_cimento_esperado():
+    valor = calcular_sacos_cimento(25,5)
+    assert valor == 5
+
+def test_calcular_sacos_cimento_zero():
+    valor = calcular_sacos_cimento(25,0)
+    assert 'Nenhum dos parâmetros deve ser menor ou igual a 0'
+        
 # ==========================================
 # MÓDULO: ACABAMENTO E PINTURA
 # Responsáveis: SEU_NOME
