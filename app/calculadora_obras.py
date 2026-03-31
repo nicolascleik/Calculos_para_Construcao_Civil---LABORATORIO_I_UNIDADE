@@ -15,11 +15,11 @@ def calcular_area_em_m2(altura, comprimento):
         float: O resultado da multiplicação da altura pelo comprimento.
     """
 
-    try:
-        altura = float(altura)
-        comprimento = float(comprimento)
-    except ValueError:
-        raise TypeError("O valor informado deve ser um número válido e não uma letra.")
+    if type(altura) != int and type(altura) != float:
+        raise ValueError("ALTURA deve ser um número")
+
+    if type(comprimento) != int and type(comprimento) != float:
+        raise ValueError("COMPRIMENTO deve ser um número")
 
     if altura <= 0 or comprimento <= 0:
         raise ValueError("Os valores de ALTURA e COMPRIMENTO devem ser maiores que zero")
@@ -27,6 +27,8 @@ def calcular_area_em_m2(altura, comprimento):
     area_m2 = altura * comprimento
 
     return area_m2
+
+# ------------------------------------------
 
 def calcular_tijolos_por_parede(area_parede_m2, area_tijolo_m2):
     """
@@ -40,19 +42,20 @@ def calcular_tijolos_por_parede(area_parede_m2, area_tijolo_m2):
         float: A quantidade de tijolos (blocos) necessários, arredondada para duas casas decimais.
     """
     
-    try:
-        area_parede_m2 = float(area_parede_m2)
-        area_tijolo_m2 = float(area_tijolo_m2)
-    except ValueError:
-        raise TypeError("O valor informado deve ser um número válido e não uma letra.")
+    if type(area_parede_m2) != int and type(area_parede_m2) != float:
+        raise ValueError("AREA_PAREDE deve ser um número")
+
+    if type(area_tijolo_m2) != int and type(area_tijolo_m2) != float:
+        raise ValueError("AREA_TIJOLO deve ser um número")
 
     if area_parede_m2 <= 0 or area_tijolo_m2 <= 0:
         raise ValueError("Os valores de AREA_PAREDE e AREA_TIJO devem ser maiores que zero! A função 'calcular_area_em_m2(altura, comprimento)' vai te ajudar entregando o resultado final em m2")
 
-
     quantidade_de_blocos = round((area_parede_m2 / area_tijolo_m2), 2)
 
     return quantidade_de_blocos
+
+# ------------------------------------------
 
 def calcular_volume_concreto(largura_m, comprimento_m, espessura_m):
     #Calcula o volume total de uma superfície em m³
@@ -73,6 +76,7 @@ def calcular_volume_concreto(largura_m, comprimento_m, espessura_m):
     #Calcula e retorna o volume
     return volume
 
+# ------------------------------------------
 
 def calcular_sacos_cimento(volume_concreto_m3, rendimento_saco_m3):
     #Calcula quantidade de sacos de cimento que serão ultilizados na obra
