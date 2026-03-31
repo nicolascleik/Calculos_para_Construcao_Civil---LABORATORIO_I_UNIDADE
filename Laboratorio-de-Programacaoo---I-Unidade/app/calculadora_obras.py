@@ -113,7 +113,7 @@ def calcular_caixas_piso(area_ambiente_m2, rendimento_caixa_m2):
     
     return qtd_caixas
 
-def calcular_rejunte_necessario(area_revestimento_m2, consumo_rejunte_kg_m2, tamanho_pacote_kg=1.0):
+def calcular_rejunte_necessario(area_revestimento_m2, consumo_rejunte_kg_m2):
     # Calcula a quantidade de rejunte necessária para um ambiente.
     
     # Parâmetros:
@@ -126,13 +126,8 @@ def calcular_rejunte_necessario(area_revestimento_m2, consumo_rejunte_kg_m2, tam
     # Calcula a quantidade total exata em kg (área * consumo)
     total_kg = area_revestimento_m2 * consumo_rejunte_kg_m2
     
-    # Calcula quantos pacotes serão necessários // arredodando
-    qtd_pacotes = math.ceil(total_kg / tamanho_pacote_kg)
-    
-    return {
-        "total_kg": round(total_kg, 2),
-        "quantidade_pacotes": qtd_pacotes
-    }
+    return total_kg, 2
+   
 
 def calcular_litros_tinta(area_pintura_m2, rendimento_lata_m2, quantidade_demaos):
     # Calcula a quantidade de latas/litros de tinta necessárias.

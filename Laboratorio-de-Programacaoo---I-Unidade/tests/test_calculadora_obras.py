@@ -79,15 +79,15 @@ def test_calcular_caixas_piso_zero_negativo():
 
 # ------------------------------------------
 
-"""
+
 def test_calcular_rejunte_necessario_resultado():
-    resultado = calcular_rejunte_necessario(10,2,1)
+    resultado = calcular_rejunte_necessario(10,2)
     assert resultado == 20
 
 def test_calcular_rejunte_necessario_zero_negativo():
-    resultado = calcular_rejunte_necessario(10,0,1)
+    resultado = calcular_rejunte_necessario(10,0)
     assert 'Erro: O rendimento da caixa deve ser maior que zero.'
-"""
+
 
 # ------------------------------------------
 
