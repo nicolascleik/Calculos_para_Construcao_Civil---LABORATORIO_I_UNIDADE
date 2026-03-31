@@ -130,7 +130,7 @@ def calcular_rejunte_necessario(area_revestimento_m2, consumo_rejunte_kg_m2):
     # Calcula a quantidade total exata em kg (área * consumo)
     total_kg = area_revestimento_m2 * consumo_rejunte_kg_m2
     
-    return total_kg, 2
+    return total_kg
    
 
 def calcular_litros_tinta(area_pintura_m2, rendimento_lata_m2, quantidade_demaos):
