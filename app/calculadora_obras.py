@@ -150,10 +150,12 @@ def calcular_litros_tinta(area_pintura_m2, rendimento_lata_m2, quantidade_demaos
     qtd_latas = math.ceil(area_total_cobertura / rendimento_lata_m2)
     
     return qtd_latas
+
 # ==========================================
 # MÓDULO: LOGISTICA E ORÇAMENTO
 # Responsáveis: Felipe
 # ==========================================
+
 def calcular_frete_entrega(distancia_km, peso_carga_kg):
     """
     Calcula o frete de uma entrega baseado na distancia e peso da carga, R$ 2,00 por KM + R$ 0,50 por KG.
@@ -163,16 +165,18 @@ def calcular_frete_entrega(distancia_km, peso_carga_kg):
     Returns:
         float: O preço do frete arredondado.
     """
-    try:
-        distancia = float (distancia_km)
-        peso = float (peso_carga_kg)
-    except ValueError:
-        raise TypeError("Digite um numero valido (positivo e maior que zero)")
+    # Validação de tipo (seguindo o padrão do Nicolas/Ana Clara)
+    if type(distancia_km) != int and type(distancia_km) != float:
+        raise ValueError("DISTANCIA deve ser um número")
+
+    if type(peso_carga_kg) != int and type(peso_carga_kg) != float:
+        raise ValueError("PESO deve ser um número")
+
+    # Validação de valores positivos
+    if distancia_km <= 0 or peso_carga_kg <= 0:
+        raise ValueError("Os números de distancia e peso devem ser maiores que zero")
     
-    if distancia <=0 or peso <=0:
-        raise ValueError("Os numeros de distancia e peso devem ser maiores que zero")
-    
-    frete = (distancia * 2) + (peso * 0.5)
+    frete = (distancia_km * 2) + (peso_carga_kg * 0.5)
 
     return round(frete, 2)
 
@@ -185,15 +189,15 @@ def capacidade_caminhao(peso_total_pedido_kg, capacidade_maxima_veiculo_kg):
     Returns:
         bool: True se couber, False se exceder.
     """
-    try:
-        peso = float (peso_total_pedido_kg)
-        capacidade = float (capacidade_maxima_veiculo_kg)
-    except ValueError:
-        raise TypeError("Digite um numero valido (positivo e maior que zero)")
-    
-    if peso <=0 or capacidade <=0:
-        raise ValueError("digite um numero maior que zero")
-    
-    pode_carregar = capacidade >= peso
+    # Validação de tipo
+    if type(peso_total_pedido_kg) != int and type(peso_total_pedido_kg) != float:
+        raise ValueError("PESO deve ser um número")
 
-    return pode_carregar
+    if type(capacidade_maxima_veiculo_kg) != int and type(capacidade_maxima_veiculo_kg) != float:
+        raise ValueError("CAPACIDADE deve ser um número")
+
+    # Validação de valores positivos
+    if peso_total_pedido_kg <= 0 or capacidade_maxima_veiculo_kg <= 0:
+        raise ValueError("Digite um número maior que zero")
+    
+    return capacidade_maxima_veiculo_kg >= peso_total_pedido_kg

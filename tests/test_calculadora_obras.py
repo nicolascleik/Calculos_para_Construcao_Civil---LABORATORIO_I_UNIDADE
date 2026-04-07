@@ -140,8 +140,9 @@ def test_calcular_frete_entrega_valor_negativo():
     Cenário: Distância de -10km.
     Esperado: Levantar um ValueError.
     """
-    with pytest.raises (ValueError):
+    with pytest.raises(ValueError) as info:
         calcular_frete_entrega(-10, 50)
+    assert "maiores que zero" in str(info.value)
 
 def test_calcular_frete_entrega_valor_invalido():
     """
@@ -149,8 +150,9 @@ def test_calcular_frete_entrega_valor_invalido():
     Cenário: Distância informada como o texto "cem".
     Esperado: Levantar um TypeError (conforme o seu tratamento no except).
     """
-    with pytest.raises (TypeError):
-        calcular_frete_entrega ("cem", 500)
+    with pytest.raises(ValueError) as info:
+        calcular_frete_entrega("cem", 500)
+    assert "DISTANCIA deve ser um número" in str(info.value)
 
 # ------------------------------------------
 
@@ -160,12 +162,7 @@ def test_capacidade_caminhao_resultado():
     Cenário: Cria um cenário real onde o peso (1200kg) é menor que a capacidade (2000kg).
     Esperado: "É verdade que o resultado foi True?". Como 1200 cabe em 2000, o teste passa.
     """
-    peso_teste = 1200
-    capacidade_teste = 2000
-
-    resultado = capacidade_caminhao(peso_teste, capacidade_teste)
-
-    assert resultado == True
+    assert capacidade_caminhao(1200, 2000) is True
 
 def test_capacidade_caminhao_excedida():
     """
@@ -173,9 +170,7 @@ def test_capacidade_caminhao_excedida():
     Cenário: Coloca uma carga de 2000kg para um caminhão que só aguenta 1000kg.
     Esperado: "É verdade que o resultado foi False?". Como 2000 não cabe em 1000, o teste passa.
     """
-    resultado = capacidade_caminhao (2000, 1000)
-
-    assert resultado == False
+    assert capacidade_caminhao(2000, 1000) is False
 
 def test_capacidade_caminhao_valor_invalido():
     """
@@ -183,5 +178,6 @@ def test_capacidade_caminhao_valor_invalido():
     Cenário: with pytest.raises(ValueError): diz ao Python: "Eu sei que a linha de baixo vai dar um erro de valor, e eu quero que isso aconteça".
     Esperado: "É verdade que a função retornou ValueError?". Como -500 é negativo, o teste passa.
     """
-    with pytest.raises (ValueError):
-        capacidade_caminhao (-500, 2000)
+    with pytest.raises(ValueError) as info:
+        capacidade_caminhao(-500, 2000)
+    assert "maior que zero" in str(info.value)
