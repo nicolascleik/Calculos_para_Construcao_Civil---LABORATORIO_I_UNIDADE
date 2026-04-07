@@ -69,8 +69,7 @@ def calcular_volume_concreto(largura_m, comprimento_m, espessura_m):
     """
 
     if largura_m <= 0 or comprimento_m <= 0 or espessura_m <= 0:
-        #Impede que qualquer valor seja menor ou igual a 0
-        return 'Nenhum dos parâmetros deve ser menor ou igual a 0'
+        raise ValueError('Nenhum dos parâmetros deve ser menor ou igual a 0')
     
     volume = largura_m * comprimento_m * espessura_m
     #Calcula e retorna o volume
@@ -89,8 +88,7 @@ def calcular_sacos_cimento(volume_concreto_m3, rendimento_saco_m3):
     """
 
     if volume_concreto_m3 <= 0 or rendimento_saco_m3 <= 0:
-        #Impede que qualquer valor seja menor ou igual a 0
-        return 'Nenhum dos parâmetros deve ser menor ou igual a 0'
+        raise ValueError('Nenhum dos parâmetros deve ser menor ou igual a 0')
     
     qnt_sacos = math.ceil(volume_concreto_m3 / rendimento_saco_m3)
     #Calcula e retorna quantidade de sacos necessários
@@ -110,7 +108,7 @@ def calcular_caixas_piso(area_ambiente_m2, rendimento_caixa_m2):
     # area_ambiente_m2: A área do ambiente em metros quadrados.
     # rendimento_caixa_m2: Quantos metros quadrados uma caixa cobre
     if rendimento_caixa_m2 <= 0:
-        return "Erro: O rendimento da caixa deve ser maior que zero."
+        raise ValueError("Erro: O rendimento da caixa deve ser maior que zero.")
         
     # Divide a área exata pelo rendimento e arredonda para cima
     qtd_caixas = math.ceil(area_ambiente_m2 / rendimento_caixa_m2)
@@ -125,7 +123,7 @@ def calcular_rejunte_necessario(area_revestimento_m2, consumo_rejunte_kg_m2):
     # consumo_rejunte_kg_m2 : Consumo de rejunte em kg por metro quadrado.
     # tamanho_pacote_kg : O peso de cada pacote de rejunte em kg (padrão é 1kg).
     if consumo_rejunte_kg_m2 <= 0:
-        return "Erro: O consumo de rejunte deve ser maior que zero."
+        raise ValueError("Erro: O consumo de rejunte deve ser maior que zero.")
         
     # Calcula a quantidade total exata em kg (área * consumo)
     total_kg = area_revestimento_m2 * consumo_rejunte_kg_m2
@@ -141,7 +139,7 @@ def calcular_litros_tinta(area_pintura_m2, rendimento_lata_m2, quantidade_demaos
     # rendimento_lata_m2: Quantos metros quadrados a embalagem de tinta cobre por demão.
     # quantidade_demaos: Número de demãos (camadas) que serão aplicadas.
     if rendimento_lata_m2 <= 0:
-        return "Erro: O rendimento da lata deve ser maior que zero."
+        raise ValueError("Erro: O rendimento da lata deve ser maior que zero.")
         
     # Multiplica a área pelo número de demãos para saber a área total de cobertura exigida
     area_total_cobertura = area_pintura_m2 * quantidade_demaos
