@@ -1,0 +1,15 @@
+# ==========================================
+# ARQUIVOS E PASTAS IGNORADOS PELO GIT
+# ==========================================
+
+# 1. Ignorar o cache gerado pelos testes do Pytest na raiz
+.pytest_cache/
+
+# 2. Ignorar o cache do Python dentro da pasta app
+app/__pycache__/
+
+# 3. Ignorar o cache do Python dentro da pasta tests
+tests/__pycache__/
+
+# 4. Ignorar o cache do Python na raiz (caso exista)
+__pycache__/

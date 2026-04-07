@@ -165,14 +165,12 @@ def calcular_frete_entrega(distancia_km, peso_carga_kg):
     Returns:
         float: O preço do frete arredondado.
     """
-    # Validação de tipo (seguindo o padrão do Nicolas/Ana Clara)
     if type(distancia_km) != int and type(distancia_km) != float:
         raise ValueError("DISTANCIA deve ser um número")
 
     if type(peso_carga_kg) != int and type(peso_carga_kg) != float:
         raise ValueError("PESO deve ser um número")
 
-    # Validação de valores positivos
     if distancia_km <= 0 or peso_carga_kg <= 0:
         raise ValueError("Os números de distancia e peso devem ser maiores que zero")
     
@@ -189,14 +187,12 @@ def capacidade_caminhao(peso_total_pedido_kg, capacidade_maxima_veiculo_kg):
     Returns:
         bool: True se couber, False se exceder.
     """
-    # Validação de tipo
     if type(peso_total_pedido_kg) != int and type(peso_total_pedido_kg) != float:
         raise ValueError("PESO deve ser um número")
 
     if type(capacidade_maxima_veiculo_kg) != int and type(capacidade_maxima_veiculo_kg) != float:
         raise ValueError("CAPACIDADE deve ser um número")
 
-    # Validação de valores positivos
     if peso_total_pedido_kg <= 0 or capacidade_maxima_veiculo_kg <= 0:
         raise ValueError("Digite um número maior que zero")
     
