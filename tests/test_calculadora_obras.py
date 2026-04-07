@@ -70,8 +70,10 @@ def test_calcular_volume_concreto_esperado():
     assert valor == 6
 
 def test_calcular_volume_concreto_zero():
-    valor = calcular_volume_concreto(0,2,2)
-    assert 'Nenhum dos parâmetros deve ser menor ou igual a 0'
+    with pytest.raises(ValueError) as info_erro:
+        calcular_volume_concreto(0, 2, 2)
+
+    assert 'Nenhum dos parâmetros deve ser menor ou igual a 0' in str(info_erro.value)
 
 # ------------------------------------------
 
@@ -80,8 +82,10 @@ def test_calcular_sacos_cimento_esperado():
     assert valor == 5
 
 def test_calcular_sacos_cimento_zero():
-    valor = calcular_sacos_cimento(25,0)
-    assert 'Nenhum dos parâmetros deve ser menor ou igual a 0'
+    with pytest.raises(ValueError) as info_erro:
+        calcular_sacos_cimento(25, 0)
+    
+    assert "Nenhum dos parâmetros deve ser menor ou igual a 0" in str(info_erro.value)
         
 # ==========================================
 # MÓDULO: ACABAMENTO E PINTURA
@@ -93,8 +97,10 @@ def test_calcular_caixas_piso_resultado():
     assert resultado == 100
 
 def test_calcular_caixas_piso_zero_negativo():
-    resultado = calcular_caixas_piso(area_ambiente_m2=0, rendimento_caixa_m2=2)
-    assert 'Erro: O rendimento da caixa deve ser maior que zero.'
+    with pytest.raises(ValueError) as info_erro:
+        calcular_caixas_piso(area_ambiente_m2=10, rendimento_caixa_m2=0)
+    
+    assert "Erro: O rendimento da caixa deve ser maior que zero." in str(info_erro.value)
 
 # ------------------------------------------
 
@@ -104,8 +110,10 @@ def test_calcular_rejunte_necessario_resultado():
     assert resultado == 20
 
 def test_calcular_rejunte_necessario_zero_negativo():
-    resultado = calcular_rejunte_necessario(10,0)
-    assert 'Erro: O rendimento da caixa deve ser maior que zero.'
+    with pytest.raises(ValueError) as info_erro:
+        calcular_rejunte_necessario(10, 0)
+    
+    assert "Erro: O consumo de rejunte deve ser maior que zero." in str(info_erro.value)
 
 
 # ------------------------------------------
@@ -115,8 +123,10 @@ def test_calcular_litros_tinta_resultado():
     assert resultado == 20
 
 def test_calcular_litros_tinta_zero_negativo():
-    resultado = calcular_litros_tinta(area_pintura_m2=0,rendimento_lata_m2=2,quantidade_demaos=0)
-    assert 'Erro: O rendimento da caixa deve ser maior que zero.'
+    with pytest.raises(ValueError) as info_erro:
+        calcular_litros_tinta(area_pintura_m2=20, rendimento_lata_m2=0, quantidade_demaos=2)
+    
+    assert "Erro: O rendimento da lata deve ser maior que zero." in str(info_erro.value)
 
 # ==========================================
 # MÓDULO: LOGISTICA E ORÇAMENTO
