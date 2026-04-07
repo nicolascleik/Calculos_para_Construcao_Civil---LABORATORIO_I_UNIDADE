@@ -1,4 +1,6 @@
-from app.calculadora_obras import *
+from app.acabamento_pintura import *
+from app.alvenaria_estrutura import *
+from app.logística_orcamento import *
 
 def iniciar_sistema():
     print("=" * 50)

@@ -1,5 +1,7 @@
 import pytest
-from app.calculadora_obras import *
+from app.acabamento_pintura import *
+from app.alvenaria_estrutura import *
+from app.logística_orcamento import *
 
 # ==========================================
 # MÓDULO: ALVENARIA E ESTRUTURA
